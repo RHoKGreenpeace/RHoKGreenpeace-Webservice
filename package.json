@@ -1,0 +1,22 @@
+{
+    "name": "rhok-greenpeace",
+    "version": "0.0.1-51",
+    "private": true,
+    "main": ".",
+    "dependencies": {
+        "express": "3.x",
+        "mongoose": "latest",
+        "underscore": "latest",
+        "hogan.js": "latest",
+        "consolidate": "latest",
+        "node-gcm": "latest",
+        "dateformat": "latest"
+    },
+    "scripts": {
+        "start": "server.js"
+    },
+    "engines": {
+        "node": ">=0.6"
+    },
+    "subdomain": "rhokaarhus"
+}

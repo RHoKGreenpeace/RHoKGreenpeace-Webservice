@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- Set the viewport width to device width for mobile -->
+        <meta name="viewport" content="width=device-width" />
+
+        <title>Welcome to Foundation</title>
+
+        <!-- Included CSS Files (Uncompressed) -->
+        <!--
+        <link rel="stylesheet" href="/css/foundation.css">
+        -->
+
+        <!-- Included CSS Files (Compressed) -->
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/desktop.css">
+        <link rel="stylesheet" href="/css/fieldset/jquery-ui-1.9.2.custom.min.css">
+
+        <script src="/js/foundation/modernizr.foundation.js"></script>
+
+        <!-- IE Fix for HTML5 Tags -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <nav class="top-bar">
+            <ul>
+                <li class="name">
+                        <a href="#home">
+                            <img src="/images/greenpeace.png" alt="Greenpeace">
+                        </a>
+                    </h1>
+                </li>
+            </ul>
+        </nav>
+
+        <form action="/events/save" method="post" enctype="" class="three columns">
+            <fieldset class="gllpLatlonPicker">
+                <legend>New Event</legend>
+                <div class="gllpMap">Google Maps</div>
+
+                <div class="row">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" placeholder="" class="six" value="RHoK Aarhus 2012" />
+                </div>
+
+                <div class="row">
+                    <label for="eventTime">Event Time</label>
+                    <input type="text" name="eventTime" id="eventTime" placeholder="hh:mm dd/mm/yyyy" class="two" value="06:32 02/12/2012">
+                </div>
+
+
+                <div class="row">
+                    <label for="long">GPS Coordinates</label>
+                    <input type="text" name="geoLocation[]" id="long" value="56.1700230" class="two inline left gllpLatitude" style="margin-right:20px;">
+                    <input type="text" name="geoLocation[]" id="lati" value="10.1557606" class="two inline left gllpLongitude">
+                    <input type="hidden" class="gllpZoom" value="6">
+                </div>
+
+                <div class="row">
+                    <label for="range">Range</label>
+                    <div class="row collapse">
+                        <div class="one columns">
+                            <input type="text" name="range" placeholder="30" value="100" />
+                        </div>
+                        <div class="one columns end">
+                            <span class="postfix">km</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="humanLocation">Human Location</label>
+                    <input type="text" class="four gllpLocationName" name="humanLocation" value="IT Parken, Aarhus">
+                </div>
+
+                <div class="row">
+                    <label for="description">Description</label>
+                    <textarea name="description" class="eight" rows="5">RHoK on!</textarea>
+                </div>
+                <div class="offset-by-two columns">
+                    <input type="hidden" name="_method" value="{{method}}">
+                    <input type="submit" class="button success" value="Save" />
+                    <br/>
+                    <br/>
+                </div>
+
+
+            </fieldset>
+        </form>
+
+        <script src="/js/foundation/jquery.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+        <script src="/js/jquery-gmaps-latlon-picker.js"></script>
+    </body>
+</html>

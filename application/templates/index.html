@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- Set the viewport width to device width for mobile -->
+        <meta name="viewport" content="width=device-width" />
+
+        <title>Welcome to Foundation</title>
+
+        <!-- Included CSS Files (Uncompressed) -->
+        <!--
+        <link rel="stylesheet" href="/css/foundation.css">
+        -->
+
+        <!-- Included CSS Files (Compressed) -->
+        <link rel="stylesheet" href="/css/app.css">
+
+        <script src="/js/foundation/modernizr.foundation.js"></script>
+
+        <!-- IE Fix for HTML5 Tags -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <nav class="top-bar">
+            <ul>
+                <li class="name">
+                        <a href="#home">
+                            <img src="/images/greenpeace.png" alt="Greenpeace">
+                        </a>
+                    </h1>
+                </li>
+            </ul>
+        </nav>
+        <article class="row" id="listview">
+            <ul class="vertical tabs twelve columns">
+                {{#events}}
+                <li>
+                    <a href="#{{title}}" data-index="{{index}}">
+                        <h3>{{title}}</h3>
+                        <h4><span>{{eventTime}}</span> - <span>{{humanLocation}}</span></h4>
+                        <p>{{description}}</p>
+                    </a>
+                </li>
+                {{/events}}
+            </ul>
+        </article>
+        <article id="details">
+            <img src="" alt="">
+            <h3></h3>
+            <h4><span class="eventTime"></span> - <span class="humanLocation"></span></h4>
+            <p></p>
+        </article>
+
+        <script src="/js/foundation/jquery.js"></script>
+        <script type="text/javascript">
+            var eventsData = {{{json}}};
+
+            $(document).ready(function(){
+                $('ul.tabs a').click(animateIn);
+                $('.name a').click(animateOut);
+            });
+
+            function animateIn(){
+                var focusEvent = eventsData[$(this).data('index')];
+
+                var d = $('#details');
+                d.find('img').attr('src', 'http://maps.googleapis.com/maps/api/staticmap?center='+focusEvent.geoLocation[0]+','+focusEvent.geoLocation[1]+'&zoom=16&size=600x600&key=AIzaSyA8rKM6CaaUig-BSiRzOdNs8ISINoj0P7Q&sensor=true').attr('alt', focusEvent.humanLocation);
+                d.find('h3').text(focusEvent.title);
+                d.find('.eventTime').text(focusEvent.eventTime);
+                d.find('.humanLocation').text(focusEvent.humanLocation);
+                d.find('p').text(focusEvent.description);
+
+                $('article#listview').animate({left: '-100%'}, 400);
+                $('article#details').animate({left: '0%'}, 400);
+            }
+            function animateOut(){
+                $('article#listview').animate({left: '0%'}, 400);
+                $('article#details').animate({left: '100%'}, 400);
+
+                d.find('img').attr('src', '').attr('alt', '');
+                d.find('h3').text('');
+                d.find('.eventTime').text('');
+                d.find('.humanLocation').text('');
+                d.find('p').text('');
+            }
+        </script>
+    </body>
+</html>

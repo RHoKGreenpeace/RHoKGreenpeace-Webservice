@@ -1,0 +1,28 @@
+
+	[
+		{
+			"titel": "New title #1",
+			"description": "Description of event 1: Event at den gamle by",
+			"timestamp": new Date(2011, 0, 31, 23),
+			"location": [56.159004, 10.191806]
+		},
+		{
+			"titel": "New titlen #2",
+			"description": "Description of event 2: Event at strøget AArhus",
+			"timestamp": new Date(2011, 1, 1, 23),
+			"location": [56.151435, 10.204915]
+		},
+		{
+			"titel": "New title #3",
+			"description": "Description of event 3: Event at AArhus lystbådhavn",
+			"timestamp": new Date(2011, 2, 2, 23),
+			"location": [56.163315, 10.217735]
+		},
+		{
+			"titel": "New title #4",
+			"description": "Description of event 4: Event at Jyllands Posten",
+			"timestamp": new Date(2011, 3, 3, 23),
+			"location": [56.122862,  10.146504]
+		}
+	]
+
