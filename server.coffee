@@ -28,7 +28,7 @@ app.set 'views', "#{__dirname}/application/templates"
 ##End Web Config
 
 ##Database
-db  = mongoose.connect 'mongodb://nodejitsu_rhokaarhus:nb3ffupfnb7b4a7js0nl6c5cao@ds043937.mongolab.com:43937/nodejitsu_rhokaarhus_nodejitsudb7367330363'
+db  = mongoose.connect require './database' #This file will not be on Github
 EventSchema = mongoose.Schema
     title: String
     description: String
@@ -39,6 +39,9 @@ EventSchema = mongoose.Schema
 
 EventModel = db.model 'events', EventSchema
 
+
+sender = new gcm.Sender require './gcmKey' #This file will not be on Github
+GCMIDs = [];
 
 
 populateEvents = (req, res, next) ->
