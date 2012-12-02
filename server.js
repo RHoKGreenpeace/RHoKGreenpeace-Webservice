@@ -27,6 +27,20 @@
   app.use(app.router);
 
   app.configure('development', function() {
+    app.get('/gcm/debug', function(req, res) {
+      return res.send(GCMIDs);
+    });
+    app.get('/events/send', function(req, res) {
+      var message;
+      message = new gcm.Message();
+      message.addData('range', 30);
+      message.addData('geoLocation', [30, 20]);
+      message.delayWhileIdle = true;
+      return sender.send(message, GCMIDs, 4, function(result) {
+        console.log(result);
+        return res.end();
+      });
+    });
     app.use(express.logger(':method :url'));
     return app.use(express.errorHandler({
       dumpExceptions: true,
@@ -109,22 +123,6 @@
   app.get('/gcm/register/:regid', function(req, res) {
     GCMIDs.push(req.params.regid);
     return res.send(200, '');
-  });
-
-  app.get('/gcm/debug', function(req, res) {
-    return res.send(GCMIDs);
-  });
-
-  app.get('/events/send', function(req, res) {
-    var message;
-    message = new gcm.Message();
-    message.addData('range', 30);
-    message.addData('geoLocation', [30, 20]);
-    message.delayWhileIdle = true;
-    return sender.send(message, GCMIDs, 4, function(result) {
-      console.log(result);
-      return res.end();
-    });
   });
 
   app.listen(8080);

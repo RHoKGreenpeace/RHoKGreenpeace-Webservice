@@ -16,6 +16,21 @@ app.use express.methodOverride()
 app.use app.router
 
 app.configure 'development', ->
+    app.get '/gcm/debug', (req, res) ->
+        res.send GCMIDs
+
+    app.get '/events/send', (req, res) ->
+        message = new gcm.Message()
+
+        message.addData('range', 30)
+        message.addData('geoLocation', [30, 20])
+
+        message.delayWhileIdle = true;
+
+        sender.send message, GCMIDs, 4, (result) ->
+            console.log result
+            res.end()
+
     app.use express.logger ':method :url'
     app.use express.errorHandler { dumpExceptions: true, showStack: true }
 
@@ -81,22 +96,6 @@ app.put '/events/save', (req, res) ->
 app.get '/gcm/register/:regid', (req, res) ->
     GCMIDs.push req.params.regid
     res.send 200, ''
-
-
-app.get '/gcm/debug', (req, res) ->
-    res.send GCMIDs
-
-app.get '/events/send', (req, res) ->
-    message = new gcm.Message()
-
-    message.addData('range', 30)
-    message.addData('geoLocation', [30, 20])
-
-    message.delayWhileIdle = true;
-
-    sender.send message, GCMIDs, 4, (result) ->
-        console.log result
-        res.end()
 
 
 
