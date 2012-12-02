@@ -4,7 +4,7 @@
 
   mongoose = require('mongoose');
 
-  db = mongoose.connect('mongodb://nodejitsu_rhokaarhus:nb3ffupfnb7b4a7js0nl6c5cao@ds043937.mongolab.com:43937/nodejitsu_rhokaarhus_nodejitsudb7367330363');
+  db = mongoose.connect(require('./../database'));
 
   EventSchema = mongoose.Schema({
     title: String,
