@@ -22,12 +22,12 @@ Loads the list displayed in the native Android app
 
 TODO:
 
-Native app to recieve messages from the server
-Native app to display notifications based on location
-Native app to sync data
+- Native app to recieve messages from the server
+- Native app to display notifications based on location 
+- Native app to sync data
 
-Better backend (c RUD)
-Security (Sanitization and validation, CSRF!!!!!)
-Database indecies
-Images added to each event
-Social media integration (FB Graph API)
+- Better backend (c RUD)
+- Security (Sanitization and validation, CSRF!!!!!)
+- Database indecies
+- Images added to each event
+- Social media integration (FB Graph API)
