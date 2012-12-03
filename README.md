@@ -27,9 +27,9 @@ TODO:
 - Native app to sync data
 
 
-- Better backend (c RUD)
-- Security (Sanitization and validation, CSRF!!!!!)
-- Database indecies
-- Images added to each event
-- Social media integration (FB Graph API)
+* Better backend (c RUD)
+* Security (Sanitization and validation, CSRF!!!!!)
+* Database indecies
+* Images added to each event
+* Social media integration (FB Graph API)
 
